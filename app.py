@@ -18,22 +18,28 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-html, body, [class*="css"] {
-    font-family: 'Inter', sans-serif;
+/* ── Global: semua teks gelap ── */
+html, body, [class*="css"],
+p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
+.stMarkdown, .stText, .stCaption,
+[data-testid="stMarkdownContainer"],
+[data-testid="stCaptionContainer"],
+[data-testid="stText"] {
+    font-family: 'Inter', sans-serif !important;
+    color: #1e293b !important;
 }
 
-/* Background */
+/* ── Background ── */
 .stApp {
     background: #f8fafc;
 }
 
-/* Header card */
+/* ── Header card (teks putih diperbolehkan di sini karena bg biru) ── */
 .header-card {
     background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     border-radius: 16px;
     padding: 2rem 2.5rem;
     margin-bottom: 2rem;
-    color: white;
     text-align: center;
 }
 .header-card h1 {
@@ -41,40 +47,40 @@ html, body, [class*="css"] {
     font-weight: 700;
     margin: 0;
     letter-spacing: -0.5px;
+    color: #ffffff !important;
 }
 .header-card p {
     font-size: 0.95rem;
     margin: 0.4rem 0 0 0;
-    opacity: 0.85;
+    color: rgba(255,255,255,0.88) !important;
 }
 
-/* Section card */
+/* ── Section card ── */
 .section-card {
     background: white;
     border-radius: 14px;
-    padding: 1.6rem 1.8rem;
-    margin-bottom: 1.4rem;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
     box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-    border: 1px solid #e8edf3;
+    border: 1px solid #e2e8f0;
 }
 .section-title {
     font-size: 1rem;
     font-weight: 600;
-    color: #1e3a5f;
-    margin: 0 0 0.8rem 0;
+    color: #1e3a5f !important;
+    margin: 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-/* Result area */
+/* ── Result cards ── */
 .result-mirip {
     background: linear-gradient(135deg, #d1fae5, #a7f3d0);
     border: 2px solid #34d399;
     border-radius: 14px;
     padding: 1.5rem 2rem;
     text-align: center;
-    color: #064e3b !important;
 }
 .result-tidak {
     background: linear-gradient(135deg, #fee2e2, #fecaca);
@@ -82,39 +88,28 @@ html, body, [class*="css"] {
     border-radius: 14px;
     padding: 1.5rem 2rem;
     text-align: center;
-    color: #7f1d1d !important;
 }
 .result-label {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
-    color: inherit;
+    color: #0f172a !important;
 }
 .result-score {
     font-size: 2.8rem;
     font-weight: 800;
     line-height: 1;
-    color: inherit;
+    color: #0f172a !important;
 }
 .result-sub {
     font-size: 0.85rem;
     margin-top: 0.5rem;
-    color: inherit;
-    opacity: 0.75;
+    color: #334155 !important;
 }
 
-/* Image caption */
-.img-caption {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #64748b;
-    margin-top: 0.4rem;
-    font-weight: 500;
-}
-
-/* Score bar */
+/* ── Score bar ── */
 .score-bar-wrap {
-    background: #e2e8f0;
+    background: #cbd5e1;
     border-radius: 99px;
     height: 10px;
     margin: 0.8rem 0;
@@ -124,76 +119,67 @@ html, body, [class*="css"] {
     height: 10px;
     border-radius: 99px;
     background: linear-gradient(90deg, #34d399, #059669);
-    transition: width 0.6s ease;
 }
 .score-bar-fill-red {
     height: 10px;
     border-radius: 99px;
     background: linear-gradient(90deg, #f87171, #dc2626);
-    transition: width 0.6s ease;
 }
 
-/* Divider */
+/* ── VS divider ── */
 .vs-divider {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 800;
-    color: #475569;
-    padding: 0 0.5rem;
-    height: 100%;
+    color: #334155 !important;
     background: #e2e8f0;
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
-    margin: auto;
-    margin-top: 5rem;
+    margin: 5rem auto 0 auto;
 }
 
-/* Streamlit overrides */
-div[data-testid="stFileUploader"] > label {
-    font-size: 0.9rem;
-    color: #1e293b;
-}
-
-/* Image caption */
+/* ── Image caption ── */
 .img-caption {
     text-align: center;
-    font-size: 0.82rem;
-    color: #1e293b;
+    font-size: 0.85rem;
+    color: #1e293b !important;
     margin-top: 0.5rem;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* Analysis box */
+/* ── Analysis box ── */
 .analysis-box {
     background: white;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     padding: 1.2rem 1.6rem;
     margin-top: 1rem;
-    color: #1e293b;
-    font-size: 0.93rem;
-    line-height: 1.7;
 }
 .analysis-box .analysis-title {
     font-weight: 700;
     font-size: 1rem;
     margin-bottom: 0.5rem;
-    color: #1e3a5f;
+    color: #1e3a5f !important;
 }
 .analysis-box ul {
-    margin: 0.4rem 0 0 1rem;
+    margin: 0.4rem 0 0 1.2rem;
     padding: 0;
 }
 .analysis-box li {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.3rem;
+    color: #1e293b !important;
+    font-size: 0.92rem;
+    line-height: 1.6;
 }
+
+/* ── Tombol analisis ── */
 .stButton > button {
     background: linear-gradient(135deg, #1e3a5f, #2563eb);
-    color: white;
+    color: #ffffff !important;
     border: none;
     border-radius: 10px;
     padding: 0.6rem 2rem;
@@ -204,6 +190,44 @@ div[data-testid="stFileUploader"] > label {
 }
 .stButton > button:hover {
     opacity: 0.88;
+}
+
+/* ── Sidebar teks ── */
+[data-testid="stSidebar"] * {
+    color: #1e293b !important;
+}
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #1e3a5f !important;
+}
+
+/* ── File uploader ── */
+[data-testid="stFileUploader"] label,
+[data-testid="stFileUploader"] span,
+[data-testid="stFileUploader"] p {
+    color: #1e293b !important;
+}
+
+/* ── Expander ── */
+[data-testid="stExpander"] summary,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] p,
+[data-testid="stExpander"] td,
+[data-testid="stExpander"] th {
+    color: #1e293b !important;
+}
+
+/* ── Slider label ── */
+[data-testid="stSlider"] label,
+[data-testid="stSlider"] span {
+    color: #1e293b !important;
+}
+
+/* ── Warning / error / info ── */
+[data-testid="stAlert"] p,
+[data-testid="stAlert"] span {
+    color: inherit !important;
 }
 </style>
 """, unsafe_allow_html=True)
