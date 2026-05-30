@@ -18,23 +18,35 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ── Global: semua teks gelap ── */
-html, body, [class*="css"],
-p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
-.stMarkdown, .stText, .stCaption,
-[data-testid="stMarkdownContainer"],
-[data-testid="stCaptionContainer"],
-[data-testid="stText"] {
-    font-family: 'Inter', sans-serif !important;
-    color: #1e293b !important;
+/* ── Font global ── */
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
 }
 
-/* ── Background ── */
+/* ────────────────────────────────────────────────────────────
+   APP BACKGROUND: #f8fafc  → putih muda  → teks GELAP
+   ──────────────────────────────────────────────────────────── */
 .stApp {
     background: #f8fafc;
+    color: #1e293b;
 }
 
-/* ── Header card (teks putih diperbolehkan di sini karena bg biru) ── */
+/* Streamlit default text elements di atas bg putih → gelap */
+.stApp p,
+.stApp span,
+.stApp label,
+.stApp li,
+.stApp td,
+.stApp th,
+.stApp caption,
+[data-testid="stMarkdownContainer"] *,
+[data-testid="stCaptionContainer"] * {
+    color: #1e293b;
+}
+
+/* ────────────────────────────────────────────────────────────
+   HEADER CARD: bg gradien BIRU TUA → teks PUTIH
+   ──────────────────────────────────────────────────────────── */
 .header-card {
     background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     border-radius: 16px;
@@ -47,15 +59,17 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
     font-weight: 700;
     margin: 0;
     letter-spacing: -0.5px;
-    color: #ffffff !important;
+    color: #ffffff !important;   /* bg gelap → teks putih */
 }
 .header-card p {
     font-size: 0.95rem;
     margin: 0.4rem 0 0 0;
-    color: rgba(255,255,255,0.88) !important;
+    color: rgba(255,255,255,0.88) !important;   /* bg gelap → teks putih */
 }
 
-/* ── Section card ── */
+/* ────────────────────────────────────────────────────────────
+   SECTION CARD: bg WHITE → teks GELAP
+   ──────────────────────────────────────────────────────────── */
 .section-card {
     background: white;
     border-radius: 14px;
@@ -67,14 +81,16 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
 .section-title {
     font-size: 1rem;
     font-weight: 600;
-    color: #1e3a5f !important;
+    color: #1e3a5f;   /* bg putih → teks navy gelap */
     margin: 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-/* ── Result cards ── */
+/* ────────────────────────────────────────────────────────────
+   RESULT MIRIP: bg gradien HIJAU MUDA → teks HIJAU TUA
+   ──────────────────────────────────────────────────────────── */
 .result-mirip {
     background: linear-gradient(135deg, #d1fae5, #a7f3d0);
     border: 2px solid #34d399;
@@ -82,6 +98,15 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
     padding: 1.5rem 2rem;
     text-align: center;
 }
+.result-mirip .result-label,
+.result-mirip .result-score,
+.result-mirip .result-sub {
+    color: #064e3b;   /* bg hijau muda → teks hijau tua */
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESULT TIDAK: bg gradien MERAH MUDA → teks MERAH TUA
+   ──────────────────────────────────────────────────────────── */
 .result-tidak {
     background: linear-gradient(135deg, #fee2e2, #fecaca);
     border: 2px solid #f87171;
@@ -89,25 +114,31 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
     padding: 1.5rem 2rem;
     text-align: center;
 }
+.result-tidak .result-label,
+.result-tidak .result-score,
+.result-tidak .result-sub {
+    color: #7f1d1d;   /* bg merah muda → teks merah tua */
+}
+
+/* Typography result (shared) */
 .result-label {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.3rem;
-    color: #0f172a !important;
 }
 .result-score {
     font-size: 2.8rem;
     font-weight: 800;
     line-height: 1;
-    color: #0f172a !important;
 }
 .result-sub {
     font-size: 0.85rem;
     margin-top: 0.5rem;
-    color: #334155 !important;
 }
 
-/* ── Score bar ── */
+/* ────────────────────────────────────────────────────────────
+   SCORE BAR: bg abu muda, isi gradien → tidak perlu teks
+   ──────────────────────────────────────────────────────────── */
 .score-bar-wrap {
     background: #cbd5e1;
     border-radius: 99px;
@@ -126,14 +157,16 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
     background: linear-gradient(90deg, #f87171, #dc2626);
 }
 
-/* ── VS divider ── */
+/* ────────────────────────────────────────────────────────────
+   VS DIVIDER: bg #e2e8f0 abu muda → teks GELAP
+   ──────────────────────────────────────────────────────────── */
 .vs-divider {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     font-weight: 800;
-    color: #334155 !important;
+    color: #334155;   /* bg abu muda → teks slate gelap */
     background: #e2e8f0;
     border-radius: 50%;
     width: 2.5rem;
@@ -141,17 +174,21 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
     margin: 5rem auto 0 auto;
 }
 
-/* ── Image caption ── */
+/* ────────────────────────────────────────────────────────────
+   IMAGE CAPTION: bg transparan (inherits putih) → teks GELAP
+   ──────────────────────────────────────────────────────────── */
 .img-caption {
     text-align: center;
     font-size: 0.85rem;
-    color: #1e293b !important;
+    color: #1e293b;   /* bg putih → teks gelap */
     margin-top: 0.5rem;
     font-weight: 600;
     line-height: 1.6;
 }
 
-/* ── Analysis box ── */
+/* ────────────────────────────────────────────────────────────
+   ANALYSIS BOX: bg WHITE → teks GELAP
+   ──────────────────────────────────────────────────────────── */
 .analysis-box {
     background: white;
     border-radius: 12px;
@@ -163,7 +200,7 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
     font-weight: 700;
     font-size: 1rem;
     margin-bottom: 0.5rem;
-    color: #1e3a5f !important;
+    color: #1e3a5f;   /* bg putih → teks navy gelap */
 }
 .analysis-box ul {
     margin: 0.4rem 0 0 1.2rem;
@@ -171,15 +208,17 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
 }
 .analysis-box li {
     margin-bottom: 0.3rem;
-    color: #1e293b !important;
+    color: #1e293b;   /* bg putih → teks gelap */
     font-size: 0.92rem;
     line-height: 1.6;
 }
 
-/* ── Tombol analisis ── */
+/* ────────────────────────────────────────────────────────────
+   TOMBOL: bg gradien BIRU TUA → teks PUTIH
+   ──────────────────────────────────────────────────────────── */
 .stButton > button {
     background: linear-gradient(135deg, #1e3a5f, #2563eb);
-    color: #ffffff !important;
+    color: #ffffff !important;   /* bg gelap → teks putih */
     border: none;
     border-radius: 10px;
     padding: 0.6rem 2rem;
@@ -192,42 +231,41 @@ p, span, label, div, li, td, th, h1, h2, h3, h4, h5, h6,
     opacity: 0.88;
 }
 
-/* ── Sidebar teks ── */
-[data-testid="stSidebar"] * {
-    color: #1e293b !important;
+/* ────────────────────────────────────────────────────────────
+   SIDEBAR: bg putih/abu muda (Streamlit default) → teks GELAP
+   ──────────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] div,
+[data-testid="stSidebar"] li {
+    color: #1e293b;   /* bg putih → teks gelap */
 }
 [data-testid="stSidebar"] h1,
 [data-testid="stSidebar"] h2,
 [data-testid="stSidebar"] h3 {
-    color: #1e3a5f !important;
+    color: #1e3a5f;   /* bg putih → headings navy gelap */
 }
 
-/* ── File uploader ── */
+/* ── File uploader: bg putih → teks gelap ── */
 [data-testid="stFileUploader"] label,
 [data-testid="stFileUploader"] span,
 [data-testid="stFileUploader"] p {
-    color: #1e293b !important;
+    color: #1e293b;
 }
 
-/* ── Expander ── */
-[data-testid="stExpander"] summary,
+/* ── Expander: bg putih → teks gelap ── */
 [data-testid="stExpander"] summary span,
 [data-testid="stExpander"] p,
 [data-testid="stExpander"] td,
 [data-testid="stExpander"] th {
-    color: #1e293b !important;
+    color: #1e293b;
 }
 
-/* ── Slider label ── */
+/* ── Slider: bg putih → teks gelap ── */
 [data-testid="stSlider"] label,
 [data-testid="stSlider"] span {
-    color: #1e293b !important;
-}
-
-/* ── Warning / error / info ── */
-[data-testid="stAlert"] p,
-[data-testid="stAlert"] span {
-    color: inherit !important;
+    color: #1e293b;
 }
 </style>
 """, unsafe_allow_html=True)
