@@ -82,19 +82,30 @@ html, body { font-family: 'Inter', sans-serif; }
     margin: 0;
 }
 
-/* ══ SIDEBAR: bg #ffffff (Streamlit default) → teks #1e293b ══ */
+/* ══ SIDEBAR: bg #ffffff → SEMUA teks #1e293b (gelap) ══
+   Pakai wildcard * agar tidak ada elemen yang terlewat.
+   Exception: elemen dengan bg gelap di dalam sidebar (jika ada)
+   harus di-override secara terpisah di bawah. ══ */
 [data-testid="stSidebar"] {
     background: #ffffff;
 }
-[data-testid="stSidebar"] .stMarkdown p,
-[data-testid="stSidebar"] label,
-[data-testid="stSidebar"] span:not(.st-emotion-cache-hidden) {
-    color: #1e293b;       /* bg putih → teks gelap */
+[data-testid="stSidebar"] * {
+    color: #1e293b !important;      /* bg putih → semua teks gelap */
     font-family: 'Inter', sans-serif;
 }
-[data-testid="stSidebar"] h3 {
-    color: #0f172a;       /* bg putih → heading lebih gelap */
+/* Heading sidebar sedikit lebih gelap */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4 {
+    color: #0f172a !important;
     font-weight: 700;
+}
+/* Sub-teks / caption sidebar */
+[data-testid="stSidebar"] small,
+[data-testid="stSidebar"] .stCaption,
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] * {
+    color: #475569 !important;      /* abu medium — masih terbaca di bg putih */
 }
 
 /* ══ FILE UPLOADER: bg #f8fafc → teks #1e293b ══ */
